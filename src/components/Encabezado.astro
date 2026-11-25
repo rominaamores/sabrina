@@ -1,0 +1,85 @@
+---
+/*
+  Encabezado del sitio Sabrina.
+  Logo centrado y menú de navegación debajo.
+  Los enlaces y el tipo de menú salen de src/datos/sitio.ts.
+  El encabezado permanece fijo si encabezado.fijo es true.
+*/
+
+import { Image } from "astro:assets";
+import Contenedor from "./ui/Contenedor.astro";
+import { encabezado, menu } from "../datos/sitio";
+import logoSabrina from "../../pack/logos/sabrina-logo-sin-fondo.png";
+
+const actual = Astro.url.pathname.replace(/\/$/, "") || "/";
+const tipo = encabezado.menu;
+
+const enlace =
+  "underline-offset-4 hover:underline aria-[current=page]:font-bold aria-[current=page]:underline";
+---
+
+<header class:list={["z-40 border-b border-borde bg-fondo", encabezado.fijo && "sticky top-0"]}>
+  <Contenedor class="relative flex flex-col items-center gap-4 py-4">
+    <a href="/" aria-label="Sabrina - Inicio" class="inline-flex items-center justify-center">
+      <Image src={logoSabrina} alt="Sabrina" class="h-auto w-36 sm:w-44" />
+    </a>
+
+    {
+      tipo !== "desplegable-siempre" && (
+        <nav
+          aria-label="Principal"
+          class:list={["w-full", tipo === "desplegable" && "hidden lg:block"]}
+        >
+          <ul class="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-center sm:gap-x-8">
+            {menu.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  aria-current={item.href === actual ? "page" : undefined}
+                  class={enlace}
+                >
+                  {item.texto}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+
+    {
+      tipo !== "barra" && (
+        <details class:list={["group", tipo === "desplegable" && "lg:hidden"]}>
+          <summary class="flex cursor-pointer list-none items-center gap-2 rounded-marca px-3 py-2 font-bold borde-marca [&::-webkit-details-marker]:hidden">
+            <span aria-hidden="true" class="group-open:hidden">
+              ☰
+            </span>
+            <span aria-hidden="true" class="hidden group-open:inline">
+              ✕
+            </span>
+            Menú
+          </summary>
+
+          <nav
+            aria-label="Principal"
+            class="absolute inset-x-0 top-full border-y border-borde bg-fondo shadow-marca"
+          >
+            <ul class="flex flex-col px-4 py-2 sm:px-6">
+              {menu.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    aria-current={item.href === actual ? "page" : undefined}
+                    class:list={["block py-3", enlace]}
+                  >
+                    {item.texto}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </details>
+      )
+    }
+  </Contenedor>
+</header>

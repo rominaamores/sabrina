@@ -1,0 +1,19 @@
+---
+/*
+  Pie de página del sitio Sabrina.
+  El texto se obtiene de src/datos/sitio.ts.
+  Se muestra centrado, sin correo ni enlaces de redes sociales.
+*/
+
+import Contenedor from "./ui/Contenedor.astro";
+import { sitio } from "../datos/sitio";
+
+const anio = new Date().getFullYear();
+const pie = sitio.pie || `© ${anio} ${sitio.nombre}`;
+---
+
+<footer class="border-t border-borde bg-superficie text-sm">
+  <Contenedor class="py-8">
+    <p class="text-center">{pie}</p>
+  </Contenedor>
+</footer>

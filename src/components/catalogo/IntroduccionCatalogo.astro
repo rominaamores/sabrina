@@ -1,0 +1,36 @@
+---
+/*
+  Introducción de la página Catálogo.
+  Contenido aprobado en el brief, sección 9.
+
+  El botón dirige a la lista de prendas mediante
+  el identificador aprobado "lista-prendas".
+*/
+
+import Contenedor from "../ui/Contenedor.astro";
+---
+
+<section aria-labelledby="titulo-introduccion-catalogo" class="py-12 md:py-16 lg:py-20">
+  <Contenedor>
+    <div class="flex flex-col items-start gap-6" data-revelar>
+      <h1
+        id="titulo-introduccion-catalogo"
+        class="max-w-3xl font-titulos text-5xl leading-tight text-marca-contraste sm:text-6xl lg:text-7xl"
+      >
+        Encuentra tu próximo favorito
+      </h1>
+
+      <p class="max-w-2xl font-texto text-base leading-relaxed text-texto sm:text-lg">
+        Explora nuestra selección de ropa de segunda mano y descubre prendas únicas para crear looks
+        a tu manera.
+      </p>
+
+      <a
+        href="#lista-prendas"
+        class="inline-flex min-h-12 items-center justify-center rounded-marca bg-marca px-7 py-3 font-texto text-base font-semibold text-marca-contraste"
+      >
+        Ver todas las prendas
+      </a>
+    </div>
+  </Contenedor>
+</section>

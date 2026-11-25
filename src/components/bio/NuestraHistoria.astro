@@ -1,0 +1,50 @@
+---
+/*
+  Sección Nuestra historia de la página Sobre Sabrina.
+  Contenido aprobado en el brief, sección 9.
+
+  Celular: fotografía arriba, título y texto debajo.
+  Computadora: fotografía a la izquierda y texto a la derecha.
+*/
+
+import { Image } from "astro:assets";
+import Contenedor from "../ui/Contenedor.astro";
+import fotoPersonal from "../../../pack/imagenes/foto-personal.jpg.jpeg";
+---
+
+<section aria-labelledby="titulo-nuestra-historia" class="py-10 md:py-16 lg:py-20">
+  <Contenedor>
+    <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
+      <div class="order-2 flex flex-col items-start gap-6" data-revelar>
+        <h1
+          id="titulo-nuestra-historia"
+          class="font-titulos text-5xl leading-tight text-marca-contraste sm:text-6xl lg:text-7xl"
+        >
+          Nuestra historia
+        </h1>
+
+        <p class="font-texto text-base leading-relaxed text-texto sm:text-lg">
+          Somos una tienda de ropa de segunda mano que busca darles <span
+            class="font-semibold text-marca-contraste">una nueva oportunidad</span
+          > a prendas especiales y ayudarte a encontrar looks que reflejen tu personalidad.
+        </p>
+
+        <p class="font-texto text-base leading-relaxed text-texto sm:text-lg">
+          Creemos que cada prenda puede tener <span class="font-semibold text-marca-contraste"
+            >una nueva historia.</span
+          > Por eso, reunimos opciones femeninas, versátiles y accesibles para que explores tu estilo,
+          experimentes con la moda y encuentres piezas que te hagan sentir bien.
+        </p>
+      </div>
+
+      <div class="order-1">
+        <Image
+          src={fotoPersonal}
+          alt="foto personal de Sabrina"
+          class="block h-auto w-full rounded-2xl object-cover"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </Contenedor>
+</section>

@@ -1,0 +1,55 @@
+---
+/*
+  Sección Bienvenida de la página Inicio.
+  Contenido aprobado en el brief, sección 9.
+
+  Celular: imagen arriba y contenido debajo.
+  Computadora: texto a la izquierda e imagen a la derecha.
+*/
+
+import { Image } from "astro:assets";
+import Contenedor from "../ui/Contenedor.astro";
+import fotoPrincipal from "../../../pack/imagenes/foto-principal.jpg.jpeg";
+---
+
+<section aria-labelledby="titulo-bienvenida" class="py-10 md:py-16 lg:py-20">
+  <Contenedor>
+    <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
+      <div class="order-1 lg:order-2">
+        <Image
+          src={fotoPrincipal}
+          alt="foto principal de Sabrina"
+          class="block h-auto w-full rounded-2xl object-cover"
+          loading="eager"
+        />
+      </div>
+
+      <div class="order-2 flex flex-col items-start gap-6 lg:order-1" data-revelar>
+        <h1
+          id="titulo-bienvenida"
+          class="font-titulos text-5xl leading-tight text-marca-contraste sm:text-6xl lg:text-7xl"
+        >
+          Bienvenida a Sabrina
+        </h1>
+
+        <p class="font-texto text-base leading-relaxed text-texto sm:text-lg">
+          Aquí encontrarás prendas de segunda mano llenas de estilo, listas para comenzar una nueva
+          historia contigo. Explora nuestra selección de ropa femenina, descubre piezas únicas y
+          crea looks que reflejen tu personalidad sin gastar de más. Queremos inspirarte a
+          experimentar con tu estilo y darle una segunda oportunidad a tus prendas favoritas.
+        </p>
+
+        <p class="font-texto text-lg font-semibold text-marca-contraste sm:text-xl">
+          Luce bien por dentro y por fuera.
+        </p>
+
+        <a
+          href="/catalogo"
+          class="inline-flex min-h-12 items-center justify-center rounded-marca bg-marca px-8 py-3 font-texto font-semibold text-marca-contraste transition-colors hover:bg-marca-contraste hover:text-superficie"
+        >
+          Descubre el catálogo
+        </a>
+      </div>
+    </div>
+  </Contenedor>
+</section>

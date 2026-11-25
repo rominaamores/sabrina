@@ -1,0 +1,15 @@
+---
+/*
+  Página Catálogo (ruta "/catalogo").
+  Cada sección se importa como un componente independiente.
+*/
+
+import Layout from "../layouts/Layout.astro";
+import IntroduccionCatalogo from "../components/catalogo/IntroduccionCatalogo.astro";
+import ListaPrendas from "../components/catalogo/ListaPrendas.astro";
+---
+
+<Layout title="Sabrina | Catálogo">
+  <IntroduccionCatalogo />
+  <ListaPrendas />
+</Layout>

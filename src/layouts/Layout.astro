@@ -1,0 +1,63 @@
+---
+/*
+  Layout base: todas las páginas lo usan.
+  Contiene el <head>, el encabezado, el pie de página y arranca las animaciones.
+  Cada página le pasa su título (del mapa del sitio); la descripción sale de src/datos/sitio.ts.
+*/
+import "../styles/global.css";
+import Encabezado from "../components/Encabezado.astro";
+import PiePagina from "../components/PiePagina.astro";
+import { sitio } from "../datos/sitio";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = sitio.descripcion } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" data-animacion={sitio.animacion}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+
+    <!-- Activa el estado inicial de las animaciones antes de pintar la página -->
+    <script is:inline>
+      if (
+        document.documentElement.dataset.animacion !== "ninguna" &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        document.documentElement.classList.add("animar");
+      }
+    </script>
+  </head>
+
+  <body class="flex min-h-dvh flex-col">
+    <a
+      href="#contenido"
+      class="sr-only bg-marca px-4 py-2 font-bold text-marca-contraste focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50"
+    >
+      Saltar al contenido
+    </a>
+
+    <Encabezado />
+
+    <main id="contenido" class="flex-1">
+      <slot />
+    </main>
+
+    <PiePagina />
+
+    <script>
+      import { iniciarAnimaciones } from "../scripts/animaciones";
+
+      iniciarAnimaciones();
+    </script>
+  </body>
+</html>

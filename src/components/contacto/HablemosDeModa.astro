@@ -1,0 +1,182 @@
+---
+/*
+  Sección Hablemos de moda de la página Contacto.
+  Diseño basado en el prototipo de Sabrina.
+
+  Los íconos originales y la fotografía se importan desde pack.
+*/
+
+import Contenedor from "../ui/Contenedor.astro";
+import { Image } from "astro:assets";
+
+// Íconos originales
+import iconoCorreo from "../../../pack/logos/correo-electronico.png";
+import iconoInstagram from "../../../pack/logos/instagram.png";
+import iconoTelefono from "../../../pack/logos/telefono.png";
+import iconoTiktok from "../../../pack/logos/tiktok.png";
+
+// Fotografía final
+import imagenFinal from "../../../pack/imagenes/imagen-final-contacto.jpg.jpeg";
+
+// Datos de contacto
+const correo = "rominaamores0@gmail.com";
+const telefono = "+593 987097831";
+const whatsapp = "https://wa.me/593987097831";
+const instagram = "https://www.instagram.com/heartlessabri";
+const tiktok = "https://www.tiktok.com/@popstar.sabri";
+---
+
+<section aria-labelledby="titulo-hablemos-de-moda" class="py-12 md:py-16 lg:py-20">
+  <Contenedor>
+    <div class="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-10">
+      <!-- Columna izquierda: título y tarjeta -->
+      <div class="flex min-w-0 flex-col gap-7" data-revelar>
+        <div class="flex flex-col gap-5">
+          <h1
+            id="titulo-hablemos-de-moda"
+            class="font-titulos text-5xl leading-tight text-marca-contraste sm:text-6xl lg:text-7xl"
+          >
+            Hablemos de moda
+          </h1>
+
+          <p class="text-justify font-texto text-base leading-relaxed text-texto sm:text-lg">
+            ¿Tienes dudas sobre una prenda o quieres saber más sobre Sabrina? Estamos aquí para
+            ayudarte. Escríbenos y encontremos juntas tu próximo look favorito.
+          </p>
+        </div>
+
+        <!-- Tarjeta blanca de contacto -->
+        <div class="flex flex-col gap-6 rounded-2xl bg-superficie p-6 sm:p-8">
+          <!-- Correo electrónico -->
+          <div class="flex min-w-0 items-center gap-4">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-marca">
+              <Image
+                src={iconoCorreo}
+                alt=""
+                width={25}
+                height={25}
+                class="h-6 w-6 object-contain"
+              />
+            </div>
+
+            <div class="min-w-0">
+              <p class="font-texto text-sm font-semibold text-texto">Correo electrónico</p>
+
+              <a
+                href={`mailto:${correo}`}
+                class="font-texto text-sm break-all text-texto-suave transition-colors duration-200 hover:text-marca-contraste sm:text-base"
+              >
+                {correo}
+              </a>
+            </div>
+          </div>
+
+          <!-- Teléfono / WhatsApp -->
+          <div class="flex min-w-0 items-center gap-4">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-marca">
+              <Image
+                src={iconoTelefono}
+                alt=""
+                width={25}
+                height={25}
+                class="h-6 w-6 object-contain"
+              />
+            </div>
+
+            <div class="min-w-0">
+              <p class="font-texto text-sm font-semibold text-texto">Teléfono / WhatsApp</p>
+
+              <a
+                href={whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-texto text-sm text-texto-suave transition-colors duration-200 hover:text-marca-contraste sm:text-base"
+              >
+                {telefono}
+              </a>
+            </div>
+          </div>
+
+          <!-- Instagram -->
+          <div class="flex min-w-0 items-center gap-4">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-marca">
+              <Image
+                src={iconoInstagram}
+                alt=""
+                width={25}
+                height={25}
+                class="h-6 w-6 object-contain"
+              />
+            </div>
+
+            <div class="min-w-0">
+              <p class="font-texto text-sm font-semibold text-texto">Instagram</p>
+
+              <a
+                href={instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-texto text-sm text-texto-suave transition-colors duration-200 hover:text-marca-contraste sm:text-base"
+              >
+                @heartlessabri
+              </a>
+            </div>
+          </div>
+
+          <!-- TikTok -->
+          <div class="flex min-w-0 items-center gap-4">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-marca">
+              <Image
+                src={iconoTiktok}
+                alt=""
+                width={25}
+                height={25}
+                class="h-6 w-6 object-contain"
+              />
+            </div>
+
+            <div class="min-w-0">
+              <p class="font-texto text-sm font-semibold text-texto">TikTok</p>
+
+              <a
+                href={tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-texto text-sm text-texto-suave transition-colors duration-200 hover:text-marca-contraste sm:text-base"
+              >
+                @popstar.sabri
+              </a>
+            </div>
+          </div>
+
+          <!-- Botón de WhatsApp -->
+          <a
+            href={whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex min-h-12 items-center justify-center rounded-marca bg-marca px-6 py-3 text-center font-texto text-base font-semibold text-marca-contraste transition-colors duration-200 hover:bg-marca-contraste hover:text-superficie"
+          >
+            Escríbenos por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Columna derecha: fotografía final -->
+      <div class="relative min-h-80 overflow-hidden rounded-2xl bg-marca lg:h-full" data-revelar>
+        <Image
+          src={imagenFinal}
+          alt="Fotografía de Sabrina o de prendas del catálogo"
+          class="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+        />
+
+        <!-- Texto sobre la fotografía -->
+        <div class="absolute inset-x-0 bottom-0 bg-marca-contraste/70 p-6 sm:p-8">
+          <p class="font-titulos text-2xl leading-snug text-superficie sm:text-3xl">
+            Tu próxima prenda favorita merece una segunda historia.
+          </p>
+        </div>
+      </div>
+    </div>
+  </Contenedor>
+</section>

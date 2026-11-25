@@ -1,0 +1,154 @@
+---
+/*
+  Lista de prendas de la página Catálogo.
+  Contenido original del brief, sección 9.
+  Se respetan nombres, descripciones, precios y orden.
+*/
+
+import { Image } from "astro:assets";
+import Contenedor from "../ui/Contenedor.astro";
+
+import prenda01 from "../../../pack/imagenes/prenda-01-falda-jean.jpg.jpeg";
+import prenda02 from "../../../pack/imagenes/prenda-02-saco-rosado.jpg.jpeg";
+import prenda03 from "../../../pack/imagenes/prenda-03-top-negro.jpg.jpeg";
+import prenda04 from "../../../pack/imagenes/prenda-04-falda-cuadros-negra.jpg.jpeg";
+import prenda05 from "../../../pack/imagenes/prenda-05-top-beige.jpg.jpeg";
+import prenda06 from "../../../pack/imagenes/prenda-06-top-blanco.jpg.jpeg";
+import prenda07 from "../../../pack/imagenes/prenda-07-vestido-celeste.jpg.jpeg";
+import prenda08 from "../../../pack/imagenes/prenda-08-top-rosado.jpg.jpeg";
+import prenda09 from "../../../pack/imagenes/prenda-09-vestido-floral.jpg.jpeg";
+import prenda10 from "../../../pack/imagenes/prenda-10-falda-cuadros-morada.jpg.jpeg";
+import prenda11 from "../../../pack/imagenes/prenda-11-falda-cuadros-roja.jpg.jpeg";
+import prenda12 from "../../../pack/imagenes/prenda-12-falda-plisada.jpg.jpeg";
+
+const prendas = [
+  {
+    titulo: "Falda jean",
+    descripcion:
+      "Minifalda jean de tiro alto con lavado desteñido, detalles rasgados y un volante plisado con dobladillo deshilachado.",
+    precio: "$15,00",
+    imagen: prenda01,
+    alt: "falda jean",
+  },
+  {
+    titulo: "Saco rosado",
+    descripcion:
+      "Bolero corto color rosa pastel, de manga larga, con cierre frontal de lazo de satén.",
+    precio: "$5,00",
+    imagen: prenda02,
+    alt: "saco rosado",
+  },
+  {
+    titulo: "Top negro",
+    descripcion:
+      "Top corto negro con escote corazón, fruncido central y tirantes con cadenas doradas.",
+    precio: "$7,00",
+    imagen: prenda03,
+    alt: "top negro",
+  },
+  {
+    titulo: "Falda de cuadros negra",
+    descripcion: "Minifalda de corte recto con estampado de cuadros en negro, blanco y rojo.",
+    precio: "$7,00",
+    imagen: prenda04,
+    alt: "falda de cuadros negra",
+  },
+  {
+    titulo: "Top beige de manga larga",
+    descripcion: "Top corto en beige con rayas negras, manga larga y escote redondo.",
+    precio: "$15,00",
+    imagen: prenda05,
+    alt: "top beige de manga larga",
+  },
+  {
+    titulo: "Top blanco",
+    descripcion:
+      "Top corto blanco con escote redondo y bordes negros, adornado con un lazo negro y broche circular de perlas.",
+    precio: "$8,00",
+    imagen: prenda06,
+    alt: "top blanco",
+  },
+  {
+    titulo: "Vestido ajustado celeste",
+    descripcion: "Vestido corto ajustado en azul celeste, con cuello polo en V y manga corta.",
+    precio: "$15,00",
+    imagen: prenda07,
+    alt: "vestido ajustado celeste",
+  },
+  {
+    titulo: "Top rosado",
+    descripcion: "Top sin mangas en rosa palo, con cuello polo en V y ajuste entallado.",
+    precio: "$20,00",
+    imagen: prenda08,
+    alt: "top rosado",
+  },
+  {
+    titulo: "Vestido floral",
+    descripcion:
+      "Vestido corto blanco con estampado de rosas rosadas, corsé con escote corazón, mangas abullonadas y falda de volantes en capas.",
+    precio: "$20,00",
+    imagen: prenda09,
+    alt: "vestido floral",
+  },
+  {
+    titulo: "Falda de cuadros morada",
+    descripcion:
+      "Minifalda plisada de tiro alto con estampado de cuadros en tonos rosa, morado y negro.",
+    precio: "$10,00",
+    imagen: prenda10,
+    alt: "falda de cuadros morada",
+  },
+  {
+    titulo: "Falda de cuadros roja",
+    descripcion:
+      "Una prenda original que puedes llevar con diferentes tops para crear diferentes estilos.",
+    precio: "$10,00",
+    imagen: prenda11,
+    alt: "falda de cuadros roja.",
+  },
+  {
+    titulo: "Falda plisada",
+    descripcion: "Una prenda coqueta y juvenil para crear outfits llenos de personalidad.",
+    precio: "$10,00",
+    imagen: prenda12,
+    alt: "falda plisada",
+  },
+];
+---
+
+<section
+  id="lista-prendas"
+  aria-label="Lista de prendas"
+  class="scroll-mt-36 pb-16 md:pb-20 lg:pb-24"
+>
+  <Contenedor>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+      {
+        prendas.map((prenda) => (
+          <article class="flex min-w-0 flex-col overflow-hidden rounded-2xl bg-superficie">
+            <Image
+              src={prenda.imagen}
+              alt={prenda.alt}
+              class="aspect-4/5 w-full object-cover"
+              widths={[360, 540, 720]}
+              sizes="(min-width: 1024px) 320px, (min-width: 768px) 50vw, 100vw"
+              loading="lazy"
+            />
+
+            <div class="flex flex-1 flex-col gap-3 p-5">
+              <h2 class="font-titulos text-2xl leading-snug text-marca-contraste">
+                {prenda.titulo}
+              </h2>
+
+              <p class="flex-1 text-justify font-texto text-sm leading-relaxed text-texto sm:text-base">
+                {prenda.descripcion}
+              </p>
+
+              <p class="font-texto text-lg font-semibold text-marca-contraste">{prenda.precio}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </Contenedor>
+</section>

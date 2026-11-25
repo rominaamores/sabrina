@@ -1,0 +1,103 @@
+/*
+  Hoja de estilos global.
+  Decisiones de diseño aprobadas en pack/brief.md.
+  Marca: Sabrina.
+*/
+
+@import "tailwindcss";
+
+/* 1. Tipografías locales */
+
+@font-face {
+  font-family: "General Sans";
+  src: url("../../pack/fuentes/GeneralSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("../../pack/fuentes/GeneralSans-Semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*
+  Roslindale: archivo de prueba.
+  Confirmar licencia antes de publicar el sitio.
+*/
+@font-face {
+  font-family: "Roslindale Display Narrow";
+  src: url("../../pack/fuentes/Roslindale-DisplayNarrowBlack-Testing.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 2. Tokens de diseño */
+
+@theme {
+  --color-*: initial;
+
+  --color-fondo: #fee7e6;
+  --color-superficie: #ffffff;
+  --color-texto: #000000;
+  --color-texto-suave: #6b4a3a;
+  --color-borde: #f7d1d5;
+  --color-marca: #e8989a;
+  --color-marca-contraste: #721819;
+
+  --font-titulos: "Roslindale Display Narrow", sans-serif;
+  --font-texto: "General Sans", sans-serif;
+
+  --radius-marca: 9999px;
+  --shadow-marca: none;
+}
+
+:root {
+  --borde-ancho: 0px;
+}
+
+/* Borde de la marca */
+@utility borde-marca {
+  border: var(--borde-ancho) solid var(--color-borde);
+}
+
+/* 3. Estilos base */
+
+@layer base {
+  html {
+    @apply bg-fondo font-texto text-texto antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-titulos;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    @apply bg-marca text-marca-contraste;
+  }
+
+  /* Foco visible para navegación con teclado */
+  :focus-visible {
+    outline: 3px solid var(--color-texto);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Estado inicial de las animaciones */
+  html.animar [data-revelar],
+  html.animar [data-revelar-cascada] > * {
+    opacity: 0;
+  }
+}
